@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=us-ascii" />
+    <meta name="description" content="time-flies is an application to display and share you photos on a timeline and a map">
+    <meta name="keywords" content="Time-Flies, Time Flies, Photos, Pictures, Images, Social, Application, Sharing, Map, Timeline, Geolocation, Geolocated">
+    <meta name="robots" content="index, nofollow">
+    <title>time-flies</title>
+    <link href="css/time-flies.css" rel="stylesheet" type="text/css" />
+    <link href="css/jquery.modalbox.css" rel="stylesheet" type="text/css" />
+    <link href="img/tf.ico" rel="shortcut icon" type="image/ico" />
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery/plugins/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="js/jquery/plugins/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="js/jquery/plugins/jquery.waitforimages.js"></script>
+    <script type="text/javascript" src="js/date.format.js"></script>
+    <script type="text/javascript" src="js/timeline/timeline-js/timeline-api.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="js/markerclusterer.js"></script>
+    <script type="text/javascript" src="js/custom-markerclusterer.js"></script>
+    <script type="text/javascript" src="js/timemap.js"></script>
+    <script type="text/javascript" src="js/onload.js"></script>
+</head>
+
+<body>
+    <div id="loading-mask">
+        <div id="loading-text">
+            <img src="img/loading.png" height="25" alt="loading" />
+        </div>
+        <div id="progress-bar">
+            <div id="progress-bar-inner"></div>
+        </div>
+    </div>
+    <div id="time-flies-logo">
+        <a id="copyright" href="php/copyright.php"><img src="img/time-flies.png" alt="time-flies-logo" /></a>
+    </div>
+    <div id="header-bg"></div>
+    <div id="header">
+        <ol id="header-items">
+            <li class="header-item">
+                <img id="g-plus-icon" width="24" height="24" src="img/g+icon.png" alt="" />
+            </li>
+            <li class="header-item usn">
+                <span class="connect">Connect with Google+</span>
+            </li>
+            <li class="header-item usn">
+                <span id="albums-tab">My Albums</span>
+            </li>
+            <li class="header-item usn">
+                <span>Friends' Albums</span>
+            </li>
+            <li class="header-item usn">
+                <span>Discover</span>
+            </li>
+            <li class="header-item usn">
+                <span id="map-settings-tab">Map Settings<span id="map-type-id-down-arrow" class="down-arrow"></span></span>
+            </li>
+        </ol>
+        <div id="geocoder">
+            <input id="search" type="button" value="" onclick="codeAddress()" />
+            <input id="address" type="text" value="Search address" />
+        </div>
+    </div>
+
+    <div id="timemap">
+        <div id="tl-height-handle" class="cursor-hand"></div>
+        <div id="timeline-container">
+            <div id="tl-middle-line"></div>
+
+            <div id="tl-shadow-top" class="drop-shadow-top"></div>
+            <div id="tl-zoom">
+                <div id="tl-zoom-in" title="Zoom in"></div>
+                <div id="tl-zoom-out" title="Zoom out"></div>
+            </div>
+            <div id="timeline"></div>
+            <div id="tl-shadow-bottom" class="drop-shadow-bottom"></div>
+        </div>
+        <!--end of timeline-container -->
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
+    </div>
+    <!-- end timemap -->
+
+    <div id="map-settings">
+        <ol>
+            <li><span class="map-type-id usn" name="satellite">Satellite</span></li>
+            <li><span class="map-type-id usn" name="hybrid">Satellite with labels</span></li>
+            <li><span class="map-type-id usn" name="terrain">Terrain</span></li>
+            <li><span class="map-type-id usn selected" name="roadmap">Road</span></li>
+        </ol>
+    </div>
+    <!--modalboxes placeholders -->
+    <div id="albums-container" style="display:none;">
+        <div id="albums">
+            <h1 class="modalbox-header">You need to login!</h1>
+            <div class="horizontal-line"></div>
+            <button class="connect" id="connect-with-google-plus"> 
+     Connect with <img id="google-plus-text-logo" src="img/google-plus-text-logo.png" alt="g+logo"/></button>
+        </div>
+    </div>
+    <div id="photo-container" style="display:none;">
+        <div id="photo-stage">
+            <img id="photo-img" src="" />
+            <div id="photo-left-side"></div>
+            <div id="photo-right-side"></div>
+            <div id="photo-sprite-bg"></div>
+        </div>
+        <div id="photo-infowindow">
+            <div id="photo-close"></div>
+            <div id="photo-map"></div>
+        </div>
+    </div>
+    <div id='overlay' style='display:none;'></div>
+    <div style="display:none">
+        <div id="friends-albums">
+            <h1>Coming soon!</h1>
+            <div class="horizontal-line"></div>
+        </div>
+        <div id="discover">
+            <h1>Coming soon!</h1>
+            <div class="horizontal-line"></div>
+        </div>
+    </div>
+    <!--album covers placeholder-->
+    <div id="photo-no-gps">
+        <img src="" title="" />
+    </div>
+</body>
+
+</html>
